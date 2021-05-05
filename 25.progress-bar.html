@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 320vh;
+            transition: .5s;
+        }
+
+        .wrap {
+            background-color: #ddd;
+            height: 50px;
+
+            /* 回憶父層寬度 */
+            width: 100%;
+            /* 固定漂浮 */
+            position: fixed;
+        }
+
+        .progressBar {
+            background-color: pink;
+            height: 50px;
+            width: 10%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div class="progressBar"></div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // 宣告 totalHeight為 $('body')網頁總長度
+        let totalHeight = $('body').height();
+        // 宣告 sawHeight為$(window)瀏覽器可目視範圍長度
+        let sawHeight = $(window).height();
+
+
+
+        $(window).scroll(function () {
+            // 瀏覽條 百分比效果
+            console.log('scrollTop', $(this).scrollTop());
+            console.log('height', $(window).height());
+            console.log(Math.round($(this).scrollTop() / (totalHeight - sawHeight) * 100));
+
+            // .scrollTop , .scrollLeft偵測卷軸位置OR 指定卷軸位置
+
+            let width = Math.round($(this).scrollTop() / (totalHeight - sawHeight) * 100) + '%';
+            $('.progressBar').css('width', width);
+
+
+
+
+
+
+            // console.log('scollTop',$(this).scrollTop());
+
+            // 到節點背景切換效果
+            // 宣告windowScrollTop為 索引值 以偵測卷軸位置
+            let windowScrollTop = $(this).scrollTop();
+
+            // 如果windowScrollTop 所偵測卷軸位置>452 變更橘色背景
+            if (windowScrollTop > 452) {
+                $('body').css('background', 'orange');
+            }
+            // > 452的其他狀況 為沒背景
+            else {
+                $('body').css('background', 'none');
+            }
+
+
+        })
+    </script>
+
+</body>
+
+</html>

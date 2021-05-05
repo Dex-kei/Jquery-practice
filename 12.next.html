@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="level1">
+        <li class="item1">item1</li>
+        <li class="item2">item2
+            <ul class="level2">
+                <li class="item01">item01</li>
+                <li class="item02">item02
+                    <ul class="level3">
+                        <li class="item001">item001</li>
+                        <li class="item002">item002</li>
+                        <li class="item003">item003</li>
+                    </ul>
+
+                    <ul class="level3">
+                        <li class="item001">item001</li>
+                        <li class="item002">item002</li>
+                        <li class="item003">item003</li>
+                    </ul>
+                </li>
+                <li class="item03">item03</li>
+            </ul>
+        </li>
+        <li class="item3">item3</li>
+    </ul>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // $('.item001').next().css('color', 'red');
+
+        // .nextAll往後及之後的元素
+        // $('.item001').nextAll().css('color', 'blue');
+
+        // .nextUntill往後選但到特定元素後停止
+        // $('.item01').nextUntil('.item03').css('color', 'red');
+
+        // .prev()往前找一個元素
+        $('.item03').prev().css('color', 'red');
+    </script>
+</body>
+
+</html>

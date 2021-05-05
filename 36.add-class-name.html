@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #afa;
+            margin-top: 10px;
+            transition: .5s;
+        }
+
+        .active {
+            background-color: #faf;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="addClass">add Class</button>
+    <button id="removeClass">remove Class</button>
+    <button id="toggleClass">toggle Class</button>
+    <button id="hasClass">has Class</button>
+    <div class="box"></div>
+    <span></span>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // 增加class
+        $('#addClass').click(function () {
+            $('.box').addClass('active');
+        })
+        // 移除class
+        $('#removeClass').click(function () {
+            $('.box').removeClass('active');
+        })
+        // 動態切換class  只能二選一
+        $('#toggleClass').click(function () {
+            $('.box').toggleClass('active');
+        })
+        // 判斷是否有某個class
+        $('#hasClass').click(function () {
+            $('span').text($('.box').hasClass('active'));
+        })
+    </script>
+</body>
+
+</html>

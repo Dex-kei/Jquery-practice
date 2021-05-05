@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row ">
+            <form action="">
+                <div class="form-group">
+                    <select name="city" id="city" class="form-control">
+                        <option value="0">基隆</option>
+                        <option value="1">台北</option>
+                        <option value="2">新北</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <select name="dist" id="dist" class="form-control">
+                        <option value="0">七堵</option>
+                        <option value="1">中正</option>
+                        <option value="2">暖暖</option>
+                    </select>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+
+        // 宣告districtObj為
+        // 選擇項目2
+        let districtObj = [
+            // 0(垂直)
+            ['七堵', '中正', '暖暖'],
+            // 1
+            ['中正', '大安', '信義'],
+            // 2
+            ['蘆洲', '三重', '新店'],
+        ];
+
+        // 縣市選取
+        // 該值     選擇    作用
+        $('#city').change(function () {
+            console.log('hi city', $(this));
+
+            // 宣告selectedCity  this該索引值  .val()返回上方設定的value該值 
+            // 例如: 索引值 > 基隆 > value = 0 > 0
+            // 選擇項目1
+            let selectedCity = $(this).val();
+
+
+            // XX區選取(需連動上方縣市 該索引值)
+            // Scope 作用區域
+            // .each執行每一個DOM(如下方option)並循環該次(從0開始)
+            //  ID選取器      循環   作用
+            $('#dist option').each(function () {
+
+                console.log('hi dist', districtObj[selectedCity]
+                [$(this).val()]);
+
+                // console.log('hi dist option',$(this).val())
+                // 索引值 文字 由districtObj陣列 
+                // 當中找[選擇項目1][選擇項目2]   這邊的this是額外獨立 對#dist option的索引值
+                $(this).text(districtObj[selectedCity][$(this).val()]);
+            }) 
+        })
+
+    </script>
+</body>
+
+</html>

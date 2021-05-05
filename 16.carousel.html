@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <style>
+        .wrap {
+            max-width: 800px;
+            height: 400px;
+            overflow: hidden;
+            /* 由父層進行position:relative相對定位 */
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .img-wrap {
+            /* 設定總長度為4000px 上面設定最大播放寬度為800px(5張照片總寬度為4000px  不設置4000px 的話 會被下方absolute + left跑圖 不是首頁圖 ) */
+            width: 4000px;
+            height: 400px;
+            /* 以上面wrap定位起始 讓img統領進行position:absolute絕對定位 自由飄 */
+            position: absolute;
+            left: 0;
+            transition: .5s;
+
+        }
+
+        .img-wrap img {
+            width: 100%;
+            height: 100%;
+
+
+            /* 上方已設定好大小比例 */
+            /* 填滿元素的寬度及高度(維持原比例)，通常會剪掉部分的物件 */
+            /* object-fit: cover; */
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 0;
+            list-style-type: none;
+
+            display: flex;
+            justify-content: center;
+
+            width: 100%;
+        }
+
+        .slider-dots li {
+            width: 40px;
+            height: 10px;
+            margin: 0 4px;
+            border: 1px solid #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="list-unstyled d-flex img-wrap">
+            <li><img src="./imgs/slide1.jpg" alt=""></li>
+            <li><img src="./imgs/slide2.jpg" alt=""></li>
+            <li><img src="./imgs/slide3.jpg" alt=""></li>
+            <li><img src="./imgs/slide4.jpg" alt=""></li>
+            <li><img src="./imgs/slide5.jpg" alt=""></li>
+        </ul>
+
+        <ul class="slider-dots">
+            <!-- 下方jQuery導讀(從0開始計算 0~) -->
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+
+        // 宣告一個變數來儲存現在的頁數   自動播放用
+        // let 作用該區域 為Scope 全域變數
+        // 讓 頁數初始值為0
+        let page = 0;
+
+        // 在進入畫面初始 使白色快捷 顯示在.eq頁面運作
+        $('.slider-dots li').eq(page).css('background', '#fff').siblings().css('background', 'transparent');
+
+
+        // .hover 白色快捷 後運作
+        $(".slider-dots li").hover(function () {
+            // 頁數 = 索引值
+            page = $(this).index();
+
+            console.log('hi你好', $(this));
+            console.log($(this).index());
+            // $(this)代名詞= 被hover的li
+            //  this可用來延續 該動作繼續 代替表示 
+            // .siblings自己以外的元素   背景透明
+            $(this).css('background', '#fff').siblings().css('background', 'transparent');
+
+            //  $(this).index()讀取索引值後 乘* -800 + 'px'
+            $('.img-wrap').css('left', $(this).index() * -800 + 'px');
+
+        })
+
+        // 計算範例    數值+文字= -3200+px = -3200px
+        // console.log(4 * -800 + 'px');
+
+
+
+
+        // 範例 .index取得目前符合條件的選擇器是第幾個 (索引值)
+        $('li').click(function () {
+            // 連動上方this選擇該物件  
+            console.log($(this).index());
+        })
+
+
+        // js es6 的 Function寫法, 俗稱箭頭函式 () =>
+        // setInterval 固定延遲了某段時間後 才去執行(不斷循環)
+        setInterval(() => {
+            // 公式  
+            page = page + 1;
+
+            // 讓頁數能夠重製歸0 迴圈   防 頁數總數為5 超過5以上會無法重製作用
+            if (page > 4) {
+                page = 0;
+            }
+
+            // 讓頁數 上方的索引值 導入公式運作 達到圖片自動輪播作用
+            $('.img-wrap').css('left', page * -800 + 'px');
+            console.log('page = ', page);
+
+            // 白色方塊快捷 寫入函式內讓 白色快捷 與 圖片能夠同步作用
+            // .eq選取第N個 
+            $('.slider-dots li').eq(page).css('background', "#fff").siblings().css('background', 'transparent');
+
+
+
+            // 3000 表示 3000毫秒 = 3秒間隔
+        }, 3000);
+
+
+
+    </script>
+</body>
+
+</html>

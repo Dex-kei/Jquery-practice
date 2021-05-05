@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img class="pics" id="pic1" src="./imgs/slide1.jpg" alt="">
+    <img class="pics" id="pic2" src="./imgs/slide2.jpg" alt="">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // 檢查img src 為 img .attr取值 src 
+        console.log('img src', $('img').attr('src'));
+
+        // .attr可以取值 設值
+
+        // 照片 點選 作用
+        $('.pics').click(function () {
+            // 照片2  取代          點擊索引值 取代為src
+            $('#pic2').attr('src', $(this).attr("src"))
+        })
+    </script>
+</body>
+
+</html>

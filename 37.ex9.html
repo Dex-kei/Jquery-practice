@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        .fontS {
+            font-size: 0.8rem;
+        }
+
+        .fontM {
+            font-size: 1rem;
+        }
+
+        .fontL {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <div class="btn-group">
+                <button class="btn btn-info btnS">S</button>
+                <button class="btn btn-info active btnM">M</button>
+                <button class="btn btn-info btnL">L</button>
+            </div>
+        </div>
+
+        <h2>jQuery</h2>
+        <article>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ad tempore maiores rem perspiciatis
+                iusto. Porro, necessitatibus? Vel, sunt impedit! Veniam incidunt rerum reiciendis dolorum asperiores
+                inventore ea, quidem animi.
+            </p>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut ipsa nobis maiores nostrum officiis quidem,
+                omnis nulla beatae doloremque quasi sit alias, nihil, quod eos saepe facere iure esse porro!</p>
+        </article>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // 3個button都有.btn 以btn做搜索
+        $('.btn').click(function () {
+            // 檢查點
+            // console.log('this', $(this).is(":contains('S')"))
+
+
+            // 用於下方搜索後 先去除active上次搜尋的搜索值 重製的概念
+            $('.btn').removeClass('active');
+            // this 增加active  初始值為active 
+            $(this).addClass('active');
+
+            // 如果 this為  包含有S       :contains('XXX') 有包含XXX
+            if ($(this).is(":contains('S')")) {
+                // 移除class  移除預設fontM
+                $('article').removeClass();
+                // 增加class 選擇新增('fontS')
+                $('article').addClass('fontS');
+            }
+
+            if ($(this).is(":contains('M')")) {
+                $('article').removeClass();
+                $('article').addClass('fontM');
+            }
+
+            if ($(this).is(":contains('L')")) {
+                $('article').removeClass();
+                $('article').addClass('fontL');
+            }
+        })
+    </script>
+</body>
+
+</html>

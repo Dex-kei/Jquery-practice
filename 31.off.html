@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <button class="btn btn-primary" id="btnHi">Hi</button>
+    <button class="btn btn-primary" id="on">on</button>
+    <button class="btn btn-primary" id="off">off</button>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // var let const 三種宣告
+        // 宣告 sayHI 為 function()
+        let sayHi = function () {
+            console.log('say hi');
+        }
+
+
+        // DIFF 觸發時間點不同  透過別的物件觸發
+        // 點擊#on
+        $('#on').click(function () {
+            // 讓#btnHi 原本沒有console.log  透過點擊#on後綁定觸發 console.log  使#btnHi 點擊後有console.log
+            $('#btnHi').on('click', sayHi)
+        })
+
+        // 直接觸發
+        // $('#btnHi').on('click', sayHi) 
+
+        // $('#on').click(sayHi())  <= 當中的say() = function(){console.log('say hi')}
+
+        $('#off').click(function(){
+            // 解除.on的綁定 使#btnHi點擊後 沒有console.log
+            $('#btnHi').off('click', sayHi);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- <h1>Hello World</h1>
+    <button class="btn btn-primary">Button</button> -->
+
+    <div class="wrap">
+        <h1>Hi</h1>
+        <button class="btn btn-primary">Button</button>
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // .click點擊(按下去->放開)  點擊button後 觸發後面函式運作  
+        $('button').click(function () {
+            // console.log為網頁F12 檢查點用! 判斷console.log之前 還是 之後 的是否發生錯誤運作狀況的判斷點
+            console.log('click');
+
+            // 寫在公式裡面代表 完成上面後再開始運作完成A->再運作B
+            $('h1').css('color', 'red');
+        });
+
+        //  完整長板
+        // $('button').click(function(){console.log('click'); $('h1').css('color','red');
+        // });
+
+        // 滑鼠按下
+        $('button').mousedown(function () {
+            console.log('滑鼠按下');
+            $('h1').css('color','blue');
+        });
+
+        // 離開滑鼠
+        $('button').mouseup(function () {
+            console.log('離開滑鼠');
+            // $('h1').css('color','blue');
+        })
+    </script>
+</body>
+
+</html>

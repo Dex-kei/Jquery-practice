@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid transparent;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- 縮寫 .col>img[src="./imgs/person$.jpg"]*5 -->
+            <div class="col"><img src="./imgs/person1.jpg" alt=""></div>
+            <div class="col"><img src="./imgs/person2.jpg" alt=""></div>
+            <div class="col"><img src="./imgs/person3.jpg" alt=""></div>
+            <div class="col"><img src="./imgs/person4.jpg" alt=""></div>
+            <div class="col"><img src="./imgs/person5.jpg" alt=""></div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // col > img col中的img
+        $('.col>img').click(function () {
+            // 點擊該圖 變紅圈    去上一層 使用自己以外的 第一層子元素(只往下找一層)  透明
+            $(this).css('border', '5px solid red').parent().siblings().children().css('border', '5px solid transparent')
+    })
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="first">
+        <!-- 如果不使用.end() 當選取器找到進去.a1該層 只能往下尋找  -->
+        <li class="a1">list item 1
+            <ul>123</ul>
+        </li>
+
+        <li>list item 2</li>
+        <li class="a2">list item3</li>
+    </ul>
+    <ul class="second">
+        <li class="a2">list item 1</li>
+        <li>list item 2</li>
+        <li class="2">list item 3</li>
+    </ul>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // .end回到上一個選取狀態 
+        $('ul.first')
+            .find('.a1')
+            .css('background-color', 'red')
+
+            //如果不使用.end() 當選取器找到進去.a1該層 只能繼續往下尋找
+            .end()
+            .find('.a2')
+            .css('background', 'green');
+
+
+            // $("ul.first")
+            // .find(".a1")
+            // .css("background-color", "red")
+            // .next()
+            // .css('color', 'blue')
+            // .closest('.first')
+            // .find(".a2")
+            // .css("background-color", "yellow");
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
